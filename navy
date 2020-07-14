@@ -1,0 +1,25 @@
+#!/usr/bin/perl -ws
+
+my @alpha =qw(Alfa Bravo Charlie Delta Echo Foxtrot Golf Hotel India Juliett Kilo Lima Mike November Oscar Papa Quebec Romeo Sierra Tango Uniform Victor Whiskey X-ray Yankee Zulu);
+my %navy_char = map {substr($_,0,1) => $_} @alpha;
+my %navy_num = (
+  1 => 'One',
+  2 => 'Two',
+  3 => 'Three',
+  4 => 'Four',
+  5 => 'Five',
+  6 => 'Six',
+  7 => 'Seven',
+  8 => 'Eight',
+  9 => 'Nine',
+  0 => 'Zero'
+);
+my %navy_map = (%navy_char, %navy_num);
+
+
+die ("argv?") unless (@ARGV);
+foreach my $argument (@ARGV) {
+  no warnings 'uninitialized';
+  print $navy_map{uc($_)} ." " foreach (split(//,$argument));
+  print "\n";
+}
